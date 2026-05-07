@@ -146,3 +146,6 @@ Roadmap
 - 📌❌ Telegram bot hooking
 - ❌ Image recognition function
 - ❌ Image instability function
+
+# Honorable mention: 
+<img width="194" height="259" alt="image" src="https://github.com/user-attachments/assets/4562756a-e6f7-4dc0-9f12-d7c369c71022" />
