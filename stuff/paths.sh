@@ -1,5 +1,7 @@
-if [ ! -d "~/BeeTuxMacro/variables/" ]; then
-    mkdir ~/BeeTuxMacro/variables/
+export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && cd .. && pwd)
+
+if [ ! -d "$MACRO_DIR/variables/" ]; then
+    mkdir $MACRO_DIR/variables/
 fi
 
 function from_hive_to_royal_jelly_dispenser(
@@ -19,18 +21,13 @@ up_w
 jump
 sleep 0.2
 jump
-down_a
-down_w
-sleep 5
-wait 5
-up_a
-up_w
+down_aw
+wait 10
+up_aw
 shift_lock_toggle
-down_w
-down_d
+down_wd
 wait 2.5
-up_w
-up_d
+up_wd
 down_s
 wait 1
 up_s
@@ -46,10 +43,10 @@ up_w
 down_d
 wait 6.6
 up_d
-down_a
-down_s
+down_as
 wait 12
-up_s
+up_as
+down_a
 wait 8
 up_a
 down_w
@@ -58,11 +55,9 @@ up_w
 down_d
 wait 0.3
 up_d
-down_a
-down_w
+down_aw
 wait 4
-up_a
-up_w
+up_aw
 down_s
 wait 0.45
 up_s
@@ -88,11 +83,9 @@ up_w
 down_a
 wait 0.5
 up_a
-down_w
-down_a
+down_wa
 wait 3
-up_w
-up_a
+up_wa
 down_d
 wait 1.5
 up_d
@@ -157,10 +150,10 @@ up_w
 down_d
 wait 6.6
 up_d
-down_a
-down_s
+down_as
 wait 12
-up_s
+up_as
+down_a
 wait 8
 up_a
 down_w
@@ -169,11 +162,9 @@ up_w
 down_d
 wait 0.3
 up_d
-down_a
-down_w
+down_aw
 wait 4
-up_a
-up_w
+up_aw
 down_s
 wait 3
 up_s
@@ -204,20 +195,26 @@ function from_hive_to_wealth_clock_and_stockings(
     down_d
     wait 6.6
     up_d
-    down_s
-    down_a
+    down_sa
     wait 6.6
-    up_s
-    up_a
+    up_sa
     down_a
     wait 4
+    up_a
     jump
+    down_a
     wait 2
+    up_a
     jump
+    down_a
     wait 6
+    up_a
     jump
+    down_a
     wait 1
+    up_a
     jump
+    down_a
     wait 1.6
     up_a
     sleep 0.4
@@ -225,11 +222,9 @@ function from_hive_to_wealth_clock_and_stockings(
     down_w
     wait 1.1
     up_w
-    down_d
-    down_w
+    down_dw
     wait 7
-    up_d
-    up_w
+    up_dw
     down_s
     wait 0.35
     up_s
@@ -244,8 +239,8 @@ function from_hive_to_wealth_clock_and_stockings(
     wait 2
     up_d
     reset
-    date +%s > ~/BeeTuxMacro/variables/should_wealth
-    date +%s > ~/BeeTuxMacro/variables/should_stockings
+    date +%s > $MACRO_DIR/variables/should_wealth
+    date +%s > $MACRO_DIR/variables/should_stockings
 )
 function collect_around(
 down_w
@@ -315,7 +310,9 @@ sleep 2
 collect_around
 down_a
 wait 0.5
+up_a
 jump
+down_a
 wait 3
 up_a
 avoid_mobs 5
@@ -323,7 +320,9 @@ sleep 2
 collect_around
 down_d
 wait 5
+up_d
 jump
+down_d
 wait 8
 up_d
 avoid_mobs 4
@@ -340,8 +339,8 @@ avoid_mobs 6
 collect_around
 sleep 2
 from_pineapple_to_hive
-from_corner_to_hive $(cat ~/BeeTuxMacro/variables/hive_slot)
-date +%s > ~/BeeTuxMacro/variables/should_mobs
+from_corner_to_hive $(cat $MACRO_DIR/variables/hive_slot)
+date +%s > $MACRO_DIR/variables/should_mobs
 )
 
 function from_strawberry_to_hive( # переписал под новый from corner to hive
@@ -349,10 +348,10 @@ camera_left
 camera_left
 camera_left
 camera_left
-down_d
-down_w
+down_dw
 wait 0.5
-up_d
+up_dw
+down_w
 wait 3
 up_w
 
@@ -366,17 +365,16 @@ up_w
 
 down_d
 wait 0.4
-
-    down_w
-    wait 11
-
 up_d
 
-down_a
-wait 12
-up_a
+down_wd
+wait 11
+up_wd
 
-    up_w
+down_wa
+wait 12
+up_wa
+
 down_d
 wait 0.1
 up_d
@@ -407,11 +405,9 @@ jump
 jump
 shift_lock_toggle
 sleep 7
-down_a
-down_s
+down_as
 wait 0.5
-up_s
-up_a
+up_sa
 )
 
 function from_hive_to_red_cannon(
@@ -428,7 +424,9 @@ jump
 sleep 0.1
 down_d
 wait 0.7
+up_d
 jump
+down_d
 wait 0.6
 up_d
 )
@@ -508,26 +506,32 @@ function from_hive_to_wealth_clock(
     down_d
     wait 6.6
     up_d
-    down_s
-    down_a
+    down_sa
     wait 6.6
-    up_s
-    up_a
+    up_sa
     down_a
     wait 4
+    up_a
     jump
+    down_a
     wait 2
+    up_a
     jump
+    down_a
     wait 6
+    up_a
     jump
+    down_a
     wait 1
+    up_a
     jump
+    down_a
     wait 1.6
     up_a
     sleep 0.4
     e
     reset
-    date +%s > ~/BeeTuxMacro/variables/should_wealth
+    date +%s > $MACRO_DIR/variables/should_wealth
 
 )
 
@@ -539,8 +543,9 @@ function from_hive_to_honey_wreath_and_back(
     e
     sleep 5
     collect_around
-    date +%s > ~/BeeTuxMacro/variables/should_wreath
+    date +%s > $MACRO_DIR/variables/should_wreath
 )
+
 function from_hive_to_stockings_and_back (
 jump_release
 down_w
@@ -549,15 +554,62 @@ up_w
 down_d
 wait 6.6
 up_d
-down_s
-down_a
+down_sa
 wait 4.35
-up_s
-up_a
+up_sa
 down_a
-jump_hold
-wait 13
-jump_release
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
+wait 1
+up_a
+jump
+down_a
 wait 3
 up_a
 down_d
@@ -572,34 +624,38 @@ wait 2.4
 up_d
 reset
 down_w
-sleep 3
+wait 3
 up_w
-date +%s > ~/BeeTuxMacro/variables/should_stockings
+date +%s > $MACRO_DIR/variables/should_stockings
 )
 
 function from_pumpkin_to_hive( #переписал
-down_a
-down_s
+down_as
 wait 4
-up_a
-up_s
+up_as
 down_w
 wait 5
 up_w
 down_d
 wait 0.5
 up_d
-down_w
-down_a
+
+
+down_wa
 wait 1
-up_a
+up_wa
+down_w
 wait 3
-down_a
+up_w
 jump
+down_wa
 wait 0.3
-up_a
+up_wa
+down_w
 wait 12
 up_w
+
+
 down_s
 wait 0.2
 up_s
@@ -614,10 +670,9 @@ up_s
 function from_hive_to_pumpkin_with_red_cannon(
 from_hive_to_red_cannon
 e
-down_d
-down_s
+down_ds
 wait 1.3
-up_s
+down_d
 wait 5
 jump
 sleep 1
@@ -632,16 +687,16 @@ up_w
 )
 
 function from_rose_field_to_hive( #переписано
-down_w
-down_d
+down_wd
 wait 3
-up_d
-down_a
+up_wd
+down_wa
 wait 6
 jump
 jump
 wait 14
-up_a
+up_wa
+down_w
 sleep 0.1
 up_w
 down_d
@@ -659,55 +714,31 @@ up_s
 )
 
 function from_hive_to_rose_field(
-down_w
-wait 3
-up_w
-down_d
-wait 6.6
-up_d
+from_hive_to_red_cannon
+camera_right
+camera_right
+shift_lock_toggle
+e
+sleep 0.5
+jump
 sleep 0.1
-down_a
-wait 0.05
-up_a
-sleep 0.2
 jump
-down_d
-wait 1
-up_d
-down_s
-wait 3.5
-down_d
-wait 2
-up_s
-down_a
-wait 0.05
-up_a
-sleep 0.2
+shift_lock_toggle
+sleep 2.5
 jump
-sleep 0.5
-down_s
-wait 6
-up_d
-up_s
-down_w
-wait 2
-up_w
-down_s
-down_a
-wait 1
-up_a
-sleep 0.5
-up_s
+sleep 2
+camera_left
+camera_left
 )
 
 function from_pine_tree_to_hive( #переписано
 camera_left
 sleep 0.2
 camera_left
-down_d
-down_s
+down_ds
 wait 1
-up_d
+up_ds
+down_s
 wait 3
 up_s
 down_a
@@ -724,12 +755,14 @@ jump
 sleep 0.5275
 jump
 sleep 1
-down_w
-down_d
+down_wd
 wait 1.35
-up_d
+up_wd
+down_w
 sleep 4
+up_w
 shift_lock_toggle
+down_w
 wait 5
 up_w
 down_s
@@ -754,9 +787,9 @@ function from_corner_to_hive(
     shift_lock_toggle
     for ((i=0; i<5-$1; i++)); do
         jump
-        sleep 0.513
+        sleep 0.56
         jump
-        sleep 0.9
+        sleep 1
     done
     camera_right
     camera_right
@@ -779,9 +812,9 @@ function from_corner_to_hive_no_pixel_detection(
     shift_lock_toggle
     for ((i=0; i<5-$1; i++)); do
         jump
-        sleep 0.513
+        sleep 0.56
         jump
-        sleep 0.9
+        sleep 1
     done
     camera_right
     shift_lock_toggle

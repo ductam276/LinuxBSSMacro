@@ -1,3 +1,11 @@
-- Brand new sandbox feature for X11 users, allowing to use pixel detection on EVERY DE/WM. May be quirky. Check README.md
-- Removed README_ru.md and setup.sh. All setup.sh stuff was merged in start.sh
-- Added all 0 bee zone fields
+- MASSIVE update, ydotool is REPLACED with wtype and wlrctl, all routes are rewritten
+- Non-wayland users must use macro in a sandbox
+- Due to rewrite, with sandbox YOU CAN MACRO IN BACKGROUND!!
+- Replaced kitty with foot in sandbox setup
+- Now you can launch macro from any directory (thanks to ngducdun)
+- Added clicker.sh to click - auto dig wont work ;(
+- Fixed find_hive function
+
+[!] Auto Reconnect is untested
+
+If there's any issues with paths, make an issue or notify me in our Discord chat

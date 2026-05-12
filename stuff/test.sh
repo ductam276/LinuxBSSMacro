@@ -1,4 +1,4 @@
-. ~/BeeTuxMacro/stuff/utils.sh
-. ~/BeeTuxMacro/stuff/paths.sh
+export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && cd .. && pwd)
 
-from_corner_to_hive $(cat ~/BeeTuxMacro/variables/hive_slot)
+. $MACRO_DIR/utils.sh
+. $MACRO_DIR/paths.sh

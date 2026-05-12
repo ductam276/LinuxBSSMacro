@@ -1,7 +1,9 @@
-. ~/BeeTuxMacro/config.sh
+export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && cd .. && pwd)
 
-if [ ! -d "~/BeeTuxMacro/variables/" ]; then
-    mkdir ~/BeeTuxMacro/variables/
+. $MACRO_DIR/config.sh
+
+if [ ! -d "$MACRO_DIR/variables/" ]; then
+    mkdir $MACRO_DIR/variables/
 fi
 
 BASE_SPEED=32.2
@@ -14,7 +16,7 @@ honey_wreath_threshold=$((current_time - 1800))
 sleep 0.4
 
 if [[ $AUTO_WREATH == 1 ]]; then
-    if [ "$(cat ~/BeeTuxMacro/variables/should_wreath)" -lt "$honey_wreath_threshold" ]; then
+    if [ "$(cat $MACRO_DIR/variables/should_wreath)" -lt "$honey_wreath_threshold" ]; then
         from_hive_to_honey_wreath_and_back
         if pixel_in_red_range $FULL_BACKPACK_PIXEL; then
             down_s
@@ -27,7 +29,7 @@ if [[ $AUTO_WREATH == 1 ]]; then
             e
             sleep $CONVERT_TIME
         else
-            date +%s > ~/BeeTuxMacro/variables/should_wreath
+            date +%s > $MACRO_DIR/variables/should_wreath
             reset
             down_w
             wait 4
@@ -38,9 +40,9 @@ else
     e
     sleep 1
 
-    if [[ $BACKPACK_DETECTION_MODE == 2 || -f ~/BeeTuxMacro/variables/cant_use_pixel_detection ]]; then
+    if [[ $BACKPACK_DETECTION_MODE == 2 || -f $MACRO_DIR/variables/cant_use_pixel_detection ]]; then
         sleep $CONVERT_TIME
-        rm ~/BeeTuxMacro/variables/time_exceed
+        rm $MACRO_DIR/variables/time_exceed
         return 0
     fi
 
@@ -54,9 +56,9 @@ else
     fi
 
     if [[ $BACKPACK_DETECTION_MODE == 1 ]]; then
-        if [ -f ~/BeeTuxMacro/variables/time_exceed ]; then
+        if [ -f $MACRO_DIR/variables/time_exceed ]; then
             sleep $CONVERT_TIME
-            rm ~/BeeTuxMacro/variables/time_exceed
+            rm $MACRO_DIR/variables/time_exceed
         else
             sleep $CONVERT_TIME
             if pixel_in_red_range $FULL_BACKPACK_PIXEL; then
@@ -70,11 +72,9 @@ fi
 )
 
 function re_go_to_hive_slot(
-    down_w
-    down_d
+    down_wd
     wait 4
-    up_w
-    up_d
+    up_wd
     down_a
     wait 0.1
     up_a
@@ -87,10 +87,10 @@ function re_go_to_hive_slot(
     down_s
     wait 0.1
     up_s
-    if [ ! -f ~/BeeTuxMacro/variables/cant_use_pixel_detection ]; then
-        from_corner_to_hive_no_pixel_detection $(cat ~/BeeTuxMacro/variables/hive_slot)
+    if [ ! -f $MACRO_DIR/variables/cant_use_pixel_detection ]; then
+        from_corner_to_hive_no_pixel_detection $(cat $MACRO_DIR/variables/hive_slot)
     else
-        from_corner_to_hive $(cat ~/BeeTuxMacro/variables/hive_slot)
+        from_corner_to_hive $(cat $MACRO_DIR/variables/hive_slot)
     fi
 )
 
@@ -120,10 +120,23 @@ function find_hive(
     shift_lock_toggle
     for ((i=0; i<5; i++)); do
     if pixel_in_trade_disabled_range $(get_coords_to_check_disabled_trade_requests); then
-        jump
-        sleep 0.513
-        jump
-        sleep 0.9
+        camera_right
+        camera_right
+        if pixel_in_trade_disabled_range $(get_coords_to_check_disabled_trade_requests); then
+            camera_left
+            camera_left
+            jump
+            sleep 0.53
+            jump
+            sleep 0.9
+        else
+            camera_left
+            camera_left
+            jump
+            sleep 0.53
+            jump
+            sleep 0.9
+        fi
     else
     if pixel_is_white $(get_claim_hive_c_coords) || pixel_is_white $(get_make_honey_h_coords); then
         e
@@ -131,12 +144,12 @@ function find_hive(
         camera_right
         shift_lock_toggle
         shift_lock_toggle
-        echo $(echo 5-$i | bc) > ~/BeeTuxMacro/variables/hive_slot
-        notify-send $(cat ~/BeeTuxMacro/variables/hive_slot)
+        echo $(echo 5-$i | bc) > $MACRO_DIR/variables/hive_slot
+        notify-send $(cat $MACRO_DIR/variables/hive_slot)
         return 0
     else
         jump
-        sleep 0.513
+        sleep 0.53
         jump
         sleep 0.9
     fi
@@ -244,7 +257,7 @@ function check_update_git( #that was vibe coded :P
         error "Good news! Macro was updated $AGE!"
         error "Use 'git pull' to update. Changelog:"
         curl -l https://raw.githubusercontent.com/painvision/BeeTuxMacro/refs/heads/main/changelog.txt
-        notify-send -i ~/BeeTuxMacro/frosty_bee.png "BeeTux Macro ☃️" "Good news! Macro was updated $AGE! Use 'git pull' to update"
+        notify-send -i $MACRO_DIR/frosty_bee.png "BeeTux Macro ☃️" "Good news! Macro was updated $AGE! Use 'git pull' to update"
     else
         note "Macro's good to go! Last commit was $AGE. Changelog:"
         curl -l https://raw.githubusercontent.com/painvision/BeeTuxMacro/refs/heads/main/changelog.txt
@@ -295,10 +308,12 @@ function move_mouse_on_coords(
 
     local new_x new_y
 
-    new_x=$(echo "scale=0; $orig_x * $width / $orig_width" / 2 | bc)
-    new_y=$(echo "scale=0; $orig_y * $height / $orig_height" / 2 | bc)
+    new_x=$(echo "scale=0; $orig_x * $width / $orig_width" | bc)
+    new_y=$(echo "scale=0; $orig_y * $height / $orig_height" | bc)
 
-    ydotool mousemove -a -- $new_x $new_y
+    wlrctl pointer move -10000 -10000
+    sleep 0.1
+    wlrctl pointer move $new_x $new_y
 )
 function get_reconnect_coords(
     local resolution
@@ -498,155 +513,198 @@ function wait(
 
 
 function exit_macro(
-bash -c ~/BeeTuxMacro/stuff/close.sh
+bash -c $MACRO_DIR/stuff/close.sh
 )
 
 function place_splinker(
-down_s
-down_a
+down_sa
 wait 0.1
-up_s
-up_a
+up_sa
 jump
 sleep 0.5
-ydotool type $SPRINKLER_SLOT
+wtype $SPRINKLER_SLOT
 down_a
 wait 0.7
 up_a
 jump
 sleep 0.5
-ydotool type $SPRINKLER_SLOT
+wtype $SPRINKLER_SLOT
 down_s
 wait 0.3
 up_s
 sleep 0.4
 jump
 sleep 0.5
-ydotool type $SPRINKLER_SLOT
+wtype $SPRINKLER_SLOT
 down_d
 wait 0.7
 up_d
 jump
 sleep 0.5
-ydotool type $SPRINKLER_SLOT
+wtype $SPRINKLER_SLOT
 down_w
 wait 0.3
 up_w
 )
 
 function reset (
-ydotool key 1:1 1:0 19:1 19:0 28:1 28:0 28:1 28:0 28:1 28:0 -d 120
+wtype -P Escape -s 40 -p Escape
+sleep 0.2
+wtype -P R -s 40 -p R
+sleep 0.2
+wtype -P Return -s 40 -p Return
 sleep 7.5
-rm ~/BeeTuxMacro/variables/sprinklers_placed
+rm $MACRO_DIR/variables/sprinklers_placed
 )
 
 function zoom_out(
-ydotool key 24:1 24:0
+wtype -P O -p O
 sleep 0.05
 )
 
-function auto_dig_on(
-ydotool click 0x40
-)
-
-function auto_dig_off(
-ydotool click 0x80
-)
-
 function lmb_click(
-ydotool click 0xC0
+wlrctl pointer click left
 )
 
 function rmb_click(
-ydotool click 0xC1
+wlrctl pointer click right
 )
 
 function shift_lock_toggle(
 sleep 0.3
-ydotool key 42:1 42:0
+wtype -P Shift_L -s 40 -p Shift_L
 sleep 0.1
 )
 
 function e(
 sleep 0.2
-ydotool key 18:1 18:0
+wtype -P E -p E
 )
 
 function jump (
-ydotool key 57:1 57:0 -d 50
+wtype -P space -s 40 -p space
 )
 
 function jump_hold (
-ydotool key 57:1
+wtype -P space
 )
 
 function jump_release (
-ydotool key 57:0
+wtype -p space
 )
 
 function unhold_keys(
-ydotool click 0xc0
-ydotool key 30:0
-ydotool key 31:0
-ydotool key 32:0
-ydotool key 51:0
-ydotool key 52:0
-ydotool key 1:0
-ydotool key 19:0
-ydotool key 28:0
-ydotool key 17:0
+wlrctl pointer click
+wtype -p W -p A -p S -p D -p space -p Escape -p Return -p E
 )
 
 function down_d(
-ydotool key 32:1
+wtype -P D
 )
 
 function up_d(
-ydotool key 32:0
+wtype -p D
 )
 
 
 function down_w(
-ydotool key 17:1
+wtype -P W
 )
 
 function up_w(
-ydotool key 17:0
+wtype -p W
 )
 
 function down_a(
-ydotool key 30:1
+wtype -P A
 )
 
 function up_a(
-ydotool key 30:0
+wtype -p A
+)
+function down_s(
+wtype -P S
 )
 
 function up_s(
-ydotool key 31:0
+wtype -p S
 )
 
-function down_s(
-ydotool key 31:1
+function down_wd(
+wtype -P W -P D
 )
 
+function up_wd(
+wtype -p W -p D
+)
+
+function down_wa(
+wtype -P W -P A
+)
+
+function up_wa(
+wtype -p W -p A
+)
+
+function down_sd(
+wtype -P S -P D
+)
+
+function up_sd(
+wtype -p S -p D
+)
+
+function down_sa(
+wtype -P S -P A
+)
+
+function up_sa(
+wtype -p S -p A
+)
+
+function down_aw(
+down_wa
+)
+
+function up_aw(
+up_wa
+)
+
+function down_dw(
+down_wd
+)
+function up_dw(
+up_wd
+)
+function down_ds(
+down_sd
+)
+function up_ds(
+up_sd
+)
+function down_as(
+down_sa
+)
+function up_as(
+up_sa
+)
 
 function camera_left(
-ydotool key 51:1 51:0
+wtype -P comma -s 40 -p comma
 sleep 0.1
 )
 
 function camera_right(
-ydotool key 52:1 52:0
+wtype -P period -s 40 -p period
 sleep 0.1
 )
 
 function camera_up(
-ydotool key 104:1 104:0
+wtype -P Prior -s 40 -p Prior
 )
 
 function camera_down(
-ydotool key 109:1 109:0
+wtype -P Next -s 40 -p Next
 )
 
 
@@ -786,6 +844,6 @@ down_w
 wait 0.29
 up_w
 down_d
-wait 0.835
+wait 0.845
 up_d
 )

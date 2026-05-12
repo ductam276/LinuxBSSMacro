@@ -38,17 +38,44 @@ README.md на русском
 Installation
 </h1>
 
+Recently, I rewrote whole macro in wtype and wlrctl instead of ydotool, so it would work faster on Wayland. Switch also allowed to macro in background with sandbox.
+
 ### Install dependencies
 
 - Arch-based distros:
+
+Install AUR helper (if not installed):
+
 ```
-sudo pacman -S ydotool imagemagick bc xorg-xrandr grim
+sudo pacman -S --needed --noconfirm base-devel git go
+git clone https://aur.archlinux.org/yay.git
+cd yay/
+makepkg -si --noconfirm
+```
+
+Run this command:
+
+```
+yay -S wlrctl wtype imagemagick bc xorg-xrandr grim
 ```
 - Debian-based distros:
+
+
 ```
-sudo apt install ydotool imagemagick bc xorg-xrandr grim
+sudo apt install wtype imagemagick bc xorg-xrandr grim meson ninja scdoc
 ```
+
+And manually compile wlrctl:
+
+```
+git clone https://git.sr.ht/~brocellous/wlrctl
+cd wlrctl/
+meson setup --prefix=/usr/local build
+ninja -C build install
+```
+
 ### Open a terminal. Clone this repository:
+
 ```
 git clone https://github.com/painvision/BeeTuxMacro/
 ```
@@ -61,9 +88,9 @@ Setup
 
 ## Sandbox
 
-If your DE/WM doesn't support `grim` protocols, you can use macro with a "sandbox", so your macro would work as intended
+If your DE/WM doesn't support `grim` protocols, or if you want to use your macro in background, you can use macro with a "sandbox", so your macro would work as intended
 
-Install dependencies:
+Install dependencies (make sure to install previous):
 
 - Arch-based distros:
 ```
@@ -72,6 +99,14 @@ sudo pacman -S hyprland kitty
 - Debian-based distros:
 ```
 sudo apt install hyprland kitty
+```
+If Hyprland isn't available in your distro package manager, you can compile it yourself with:
+
+```
+sudo apt install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev libtomlplusplus3 libre2-dev # why use ubuntu at that point
+git clone --recursive https://github.com/hyprwm/Hyprland
+cd Hyprland
+make all && sudo make install
 ```
 
 Next, start a sandbox:
@@ -83,22 +118,14 @@ Follow instructions on screen to make it work
 
 ## Native
 
-If your DE/WM does support `grim` protocols, or you just dont wanna use sandbox (-pixel detection things, +100MB of RAM), you can use macro natively
-
-You should have ydotoold running in a background, so macro could interact with your keyboard. **You can add it to your autostart because of its 4 MB of RAM usage.** Best way to launch ydotool daemon:
-```
-sudo /usr/bin/ydotoold --socket-path="/run/user/1000/.ydotool_socket" --socket-own="1000:1000"
-```
-Once ydotoold is running, you can start macroing. 
-
-Toggling macro on/off
+If your DE/WM does support `grim` protocols, or you just dont wanna use sandbox (if X11 it is -pixel detection things, but +100MB of RAM), you can use macro natively
 
 | Command                              | What it does
 | ------------------------------------ | ------------
 | bash -c ~/BeeTuxMacro/start.sh       | Toggles macro
 | bash -c ~/BeeTuxMacro/stuff/close.sh | Force closes macro
 
-Find a way to setup keybind with shell command in your WM/DE. 
+Find a way to setup keybind with shell command in your WM/DE. With these commands, you can start your macro without touching main folder
 
 > [!WARNING]
 > Your display scaling option MUST be 100%, Roblox on fullscreen and nothing interrupting macro to work
@@ -115,7 +142,9 @@ Roadmap
 
 
 #### Features:
-- ✅ Auto Claim Hive (optional manual selection)
+- ✅ Works on Wayland natively and X11 with sandbox
+- ✅ Macroing in background - sandbox only
+- ✅ Auto Claim Hive (can be manual)
 - ✅ Auto Sprinkler
 - ✅ Auto Dig
 - ✅ Convert when full backpack
@@ -127,8 +156,7 @@ Roadmap
 - ✅ Auto Find Hive
 - ✅ Auto Red/White/Blue boosters
 - ✅ Gather Interrupt for individual dispenser
-- ✅ Auto Reconnect
-- ✅ Works on X11 and Wayland
+- ✔️ Auto Reconnect - native only ;(
 
 > Planned: ❌ Planters, ❌ More dispensers
 
