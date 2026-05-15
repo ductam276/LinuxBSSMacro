@@ -16,7 +16,7 @@ note "Press Enter when you are 100% sure Hyprland window is fullscreen"
 read
 width=$(xrandr | grep "*" | awk '{print $1}' | cut -dx -f1)
 height=$(xrandr | grep "*" | awk '{print $1}' | cut -dx -f2)
-echo "monitor = ,"$width"x"$height",auto,1" > $MACRO_DIR/sandbox/monitor.conf
+echo "monitor = ,"$width"x"$height",auto,1" > ~/macro_monitor.conf
 clear
 info "Enter your password. Script will add your user in 'input' group and start ydotool daemon"
 sudo usermod -aG input $USER 2>/dev/null
