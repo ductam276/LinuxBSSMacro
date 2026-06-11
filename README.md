@@ -1,3 +1,6 @@
+> [!WARNING]
+> BeeTux Macro is unmaintained as i broke my laptop. I hope that I'll be back in 2-3 months, so I can continue that project
+
 <p align='center'>
 <img width="300" height="230" alt="image" src="https://github.com/painvision/BeeTuxMacro/blob/main/frosty_bee.png">
 </p>
