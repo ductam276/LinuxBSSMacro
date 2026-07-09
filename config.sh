@@ -1,9 +1,8 @@
-#  ____           _____
-# | __ )  ___  __|_   _|   ___  __
-# |  _ \ / _ \/ _ \| || | | \ \/ /
-# | |_) |  __/  __/| || |_| |>  <
-# |____/ \___|\___||_| \__,_/_/\_\
-
+#  _    _              ___ ___ ___ __  __                 
+# | |  (_)_ _ _  ___ _| _ ) __/ __|  \/  |__ _ __ _ _ ___ 
+# | |__| | ' \ || \ \ / _ \__ \__ \ |\/| / _` / _| '_/ _ \
+# |____|_|_||_\_,_/_\_\___/___/___/_|  |_\__,_\__|_| \___/
+                                                         
 # Open source Bee Swarm Simulator macro, written in bash and ydotool for Linux
 # github.com/painvision/BeeTuxMacro
 
@@ -15,17 +14,36 @@
 #
 
 # Enter your walking speed WITHOUT haste tokens
-WALKSPEED=28
+WALKSPEED=24
 
 # Use sprinklers?
-USE_SPRINKLER=1 #0 - off, 1 - on
+USE_SPRINKLER=0 #0 - off, 1 - on
 
 # Enter slot number where your sprinkler is
 SPRINKLER_SLOT=1 #from 1 to 6
 
 # Use auto hive?
-AUTO_FIND_HIVE=1 #0 - off, 1 - on
+AUTO_FIND_HIVE=0 #0 - off, 1 - on
 
+#How many bee in hive: (1-50) 
+BEE_IN_HIVE= 1
+
+#Bee discovered? (1 -46)
+BEE_DISCOVERED= 1
+
+#Transport
+if [[BEE_DISCOVERED >= 8 && BEE_IN_HIVE >= 10]]; then
+    CAN_USE_SS= 1;
+    else
+    CAN_USE_SS= 0;
+fi
+if [[BEE_DISCOVERED >= 25]]; then
+    CAN_USE_RC= 1;
+    else
+    CAN_USE_RC= 0;
+fi
+#None- 0, Parachute - 1, Gilder - 2
+SLOW_FALL=0
 #  _____ ___ _____ _     ____
 # |  ___|_ _| ____| |   |  _ \
 # | |_   | ||  _| | |   | | | |
@@ -34,7 +52,7 @@ AUTO_FIND_HIVE=1 #0 - off, 1 - on
 #
 
 # Available options: pine, rose, strawberry, pineapple, pumpkin
-FIELD="pine"
+FIELD="pineapple"
 
 # Choose your pattern to farm on fields
 function farm_pattern(
