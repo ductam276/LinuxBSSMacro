@@ -13,6 +13,6 @@ if [[ $USE_SPRINKLER == 1 ]]; then
     fi
 fi
 
-bash -c $MACRO_DIR/farm.sh &
-bash -c $MACRO_DIR/timer.sh &
-bash -c $MACRO_DIR/check_inventory.sh &
+bash -c $MACRO_DIR/main/farm.sh &
+bash -c $MACRO_DIR/main/timer.sh &
+bash -c $MACRO_DIR/main/check_inventory.sh &

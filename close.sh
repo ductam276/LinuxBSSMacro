@@ -1,5 +1,5 @@
-export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && cd .. && pwd)
-. $MACRO_DIR/stuff/utils.sh
+export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && pwd)
+. $MACRO_DIR/main/utils.sh
 
 unhold_keys 2>/dev/null
 unhold_keys 2>/dev/null

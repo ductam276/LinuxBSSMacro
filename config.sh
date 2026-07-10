@@ -26,22 +26,12 @@ SPRINKLER_SLOT=1 #from 1 to 6
 AUTO_FIND_HIVE=0 #0 - off, 1 - on
 
 #How many bee in hive: (1-50) 
-BEE_IN_HIVE= 1
+BEE_IN_HIVE=1
 
 #Bee discovered? (1 -46)
-BEE_DISCOVERED= 1
+BEE_DISCOVERED=1
 
 #Transport
-if [[BEE_DISCOVERED >= 8 && BEE_IN_HIVE >= 10]]; then
-    CAN_USE_SS= 1;
-    else
-    CAN_USE_SS= 0;
-fi
-if [[BEE_DISCOVERED >= 25]]; then
-    CAN_USE_RC= 1;
-    else
-    CAN_USE_RC= 0;
-fi
 #None- 0, Parachute - 1, Gilder - 2
 SLOW_FALL=0
 #  _____ ___ _____ _     ____
