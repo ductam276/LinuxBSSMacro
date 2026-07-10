@@ -1,11 +1,9 @@
-> [!WARNING]
-> BeeTux Macro is unmaintained as i broke my laptop. I hope that I'll be back in 2-3 months, so I can continue that project
 
 <p align='center'>
 <img width="300" height="230" alt="image" src="https://github.com/painvision/BeeTuxMacro/blob/main/frosty_bee.png">
 </p>
 <h1 align='center'>
-BeeTux Macro ☃️
+LinuxBSSMacro - A Fork of BeeTuxMacro ☃️
 </h1>
 
 <p align='center'>
@@ -29,7 +27,7 @@ Open source Bee Swarm Simulator macro made for Linux. Now supports every DE/WM, 
 </p>
 
 > [!WARNING]
-> If you encounter bugs, open an issue, make a pull request, join our [discord chat](https://discord.gg/pAUUYbPqs6), or [group on Telegram](https://t.me/+gws61dtKyIRlYzky). [🇷🇺/🇺🇸]
+> If you encounter bugs, open an issue, make a pull request, join our [discord chat](https://discord.gg/pAUUYbPqs6), or [group on Telegram](https://t.me/+gws61dtKyIRlYzky). [🇷🇺/🇺🇸/🇻🇳]
 
 <p align='center'>
 <a href="https://github.com/painvision/BeeTuxMacro/blob/main/README_ru.md">
