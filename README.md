@@ -3,7 +3,7 @@
 <img width="300" height="230" alt="image" src="https://github.com/ductam276/LinuxBSSMacro/blob/main/frosty_bee.png">
 </p>
 <h1 align='center'>
-LinuxBSSMacro - A Fork of [BeeTuxMacro](https://github.com/painvision/BeeTuxMacro) ☃️
+LinuxBSSMacro - A Fork of <a href="https://github.com/painvision/BeeTuxMacro">BeeTuxMacro</a> ☃️
 </h1>
 
 <p align='center'>
