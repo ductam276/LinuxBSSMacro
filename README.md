@@ -1,6 +1,6 @@
 
 <p align='center'>
-<img width="300" height="230" alt="image" src="https://github.com/painvision/BeeTuxMacro/blob/main/frosty_bee.png">
+<img width="300" height="230" alt="image" src="https://github.com/ductam276/LinuxBSSMacro/blob/main/frosty_bee.png">
 </p>
 <h1 align='center'>
 LinuxBSSMacro - A Fork of BeeTuxMacro ☃️
@@ -35,7 +35,7 @@ README.md на русском
 </a>
 </p>
 <p align='center'>
-<a href="https://github.com/painvision/BeeTuxMacro/blob/main/README_vi.md">
+<a href="https://github.com/ductam276/LinuxBSSMacro/blob/main/README_vi.md">
 README.md Tiếng Việt
 </a>
 </p>
@@ -83,7 +83,7 @@ ninja -C build install
 ### Open a terminal. Clone this repository:
 
 ```
-git clone https://github.com/painvision/BeeTuxMacro/
+git clone https://github.com/ductam276/LinuxBSSMacro
 ```
 ### Configuration
 Edit `$MACRO_DIR/config.sh` file using your favourite text editor. No GUI, the Linux way to configure your macro
