@@ -1,24 +1,6 @@
 #!/bin/bash
 export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && pwd)
-while true; do
-    clear
-    echo "Test GUI"
-    echo "1: Open Sandbox"
-    echo "2: Run test.sh"
-    echo "3: Close Sandbox"
-    echo "$MACRO_DIR"
-    read -p "Choose: " choice
-    case $choice in 
-        1)
-            ./$MARCO_DIR/sandbox.sh > sandbox.log 2>&1 &
-            TASK_PID=$!
-            ;;
-        2) 
-            hyprctl dispatch exec "bash -c /home/ductam276/LinuxBSSMacro/test.sh" -i 0 > test.log 2>&1 &
-            TASK_PID2=$!
-            ;;
-        3)
-            ./close.sh
-            exit 0
-    esac
-done
+yad --width=300 --height=200 --buttons-layout=spread \
+--window-icon="$MACRO_DIR/frosty_bee.png" --title="LinuxBSSMacro" --text="Testing 123" \
+--button="Sandbox:bash -c $MACRO_DIR/sandbox.sh &> sandbox.log 2>&1" --button="Test:bash -c $MACRO_DIR/test.sh > test.log" --button="Stop:bash -c $MACRO_DIR/close.sh" \
+--skip-taskbar --always-print-result
