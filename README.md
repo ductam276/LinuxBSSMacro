@@ -57,7 +57,7 @@ makepkg -si --noconfirm
 Run this command:
 
 ```
-yay -S wlrctl wtype imagemagick bc xorg-xrandr grim
+yay -S wlrctl wtype imagemagick bc xorg-xrandr grim yad
 ```
 - Debian-based distros:
 
@@ -95,11 +95,11 @@ Install dependencies (make sure to install previous):
 
 - Arch-based distros:
 ```
-sudo pacman -S hyprland kitty
+sudo pacman -S hyprland foot kitty
 ```
 - Debian-based distros:
 ```
-sudo apt install hyprland kitty
+sudo apt install hyprland foot  kitty
 ```
 If Hyprland isn't available in your distro package manager, you can compile it yourself with:
 
@@ -110,23 +110,22 @@ cd Hyprland
 make all && sudo make install
 ```
 
-Next, start a sandbox:
+Next, start config.sh to fill all infomation:
 ```
-bash -c $MACRO_DIR/sandbox.sh
+bash -c $MACRO_DIR/config.sh
 ```
 
-Follow instructions on screen to make it work
+
+After that, start gui.sh to using the macro.
+```
+bash -c $MACRO_DIR/gui.sh
+```
 
 ## Native
 
-If your DE/WM does support `grim` protocols, or you just dont wanna use sandbox (if X11 it is -pixel detection things, but +100MB of RAM), you can use macro natively
+If your DE/WM does support `grim` protocols, or you just dont wanna use sandbox (if X11 it is -pixel detection things, but +100MB of RAM), you can use macro natively without using the sandbox button
 
-| Command                              | What it does
-| ------------------------------------ | ------------
-| bash -c $MACRO_DIR/start.sh       | Toggles macro
-| bash -c $MACRO_DIR/stuff/close.sh | Force closes macro
 
-Find a way to setup keybind with shell command in your WM/DE. With these commands, you can start your macro without touching main folder
 
 > [!WARNING]
 > Your display scaling option MUST be 100%, Roblox on fullscreen and nothing interrupting macro to work
