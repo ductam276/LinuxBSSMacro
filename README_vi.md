@@ -42,7 +42,7 @@ Hướng dẫn cài đặt
 
 Hiện tại, tôi đã tái cấu trúc của macro và viết lại một số chức năng, cũng như bổ sung thêm gui để tiện hơn trong việc sử dụng.
 
-### Install dependencies
+### Cài đặt các gói cần thiết
 
 - Bản phân phối dựa trên Arch-based:
 
@@ -67,7 +67,7 @@ yay -S wlrctl wtype imagemagick bc xorg-xrandr grim yad
 sudo apt install wtype imagemagick bc xorg-xrandr grim meson ninja scdoc
 ```
 
-Và tư biên dịch wlrctl:
+Và tự biên dịch wlrctl:
 
 ```
 git clone https://git.sr.ht/~brocellous/wlrctl
@@ -91,7 +91,7 @@ bash -c $MACRO_DIR/config.sh
 Setup
 </h1>
 
-## Sandbox
+## Sandbox - Môi trường ảo
 
 Nếu môi trường của bạn không hỗ trợ giao thức `grim` , hoặc bạn muốn chạy nền Macro , bạn có thể sử dụng Macro với công cụ "sandbox", và Macro sẽ hoạt động như bình thường
 Cài đặt các gói cần thiết (phải được cài trước khi sử dụng):
