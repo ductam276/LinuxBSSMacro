@@ -88,12 +88,12 @@ bash -c $MACRO_DIR/config.sh
 ```
 
 <h1 align='center'>
-Setup
+Chuẩn bị
 </h1>
 
 ## Sandbox - Môi trường ảo
 
-Nếu môi trường của bạn không hỗ trợ giao thức `grim` , hoặc bạn muốn chạy nền Macro , bạn có thể sử dụng Macro với công cụ "sandbox", và Macro sẽ hoạt động như bình thường
+Nếu môi trường của bạn không hỗ trợ giao thức `grim` , hoặc bạn muốn chạy nền Macro , bạn có thể sử dụng Macro với công cụ "sandbox", và Macro sẽ hoạt động như bình thường.
 Cài đặt các gói cần thiết (phải được cài trước khi sử dụng):
 
 - Bản phân phối dựa trên Arch-based :
@@ -119,7 +119,7 @@ bash -c $MACRO_DIR/gui.sh
 
 ## Native
 
-Nếu môi trường của bạn hỗ trợ giao thức `grim` , hoặc đơn giản là không muốn sử dụng sandbox (nếu là X11 nó là "-pixel detection"(Nhận diện pixel), nhưng tốn thêm +100MB RAM), bạn có thê chạy macro trực tiếp trên môi trường của bạn mà không cần sử dụng Sandbox
+Nếu môi trường của bạn hỗ trợ giao thức `grim` , hoặc đơn giản là không muốn sử dụng sandbox (nếu là X11 thì nó là "-pixel detection"(Nhận diện pixel), nhưng tốn thêm +100MB RAM), bạn có thể chạy macro trực tiếp trên môi trường của bạn mà không cần sử dụng Sandbox
 
 
 
