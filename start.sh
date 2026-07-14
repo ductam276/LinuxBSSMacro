@@ -1,6 +1,6 @@
 export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && pwd)
 
-. $MACRO_DIR/stuff/utils.sh
+. $MACRO_DIR/main/utils.sh
 . $MACRO_DIR/stuff/paths.sh
 . $MACRO_DIR/config.sh
 
@@ -38,7 +38,7 @@ touch $MACRO_DIR/variables/backpack_detection_mode
 echo $BACKPACK_DETECTION_MODE > $MACRO_DIR/variables/backpack_detection_mode
 
 if [ ! -f variables/cant_use_pixel_detection ]; then
-bash -c $MACRO_DIR/connect_checker.sh &
+bash -c $MACRO_DIR/main/connect_checker.sh &
 fi
 
 rm $MACRO_DIR/variables/sprinklers_placed 2>/dev/null
@@ -81,7 +81,7 @@ else
     fi
 fi
 
-bash -c $MACRO_DIR/pre_farm.sh &
+bash -c $MACRO_DIR/main/farm/pre_farm.sh &
 exit 1
 
 else

@@ -28,12 +28,8 @@ AUTO_FIND_HIVE=0 #0 - off, 1 - on
 #How many bee in hive: (1-50) 
 BEE_IN_HIVE=1
 
-#Bee discovered? (1 -46)
-BEE_DISCOVERED=1
-
-#Transport
-#None- 0, Parachute - 1, Gilder - 2
-SLOW_FALL=0
+#Bee discovered? (1 - 46)
+BEE_DIS=20
 #  _____ ___ _____ _     ____
 # |  ___|_ _| ____| |   |  _ \
 # | |_   | ||  _| | |   | | | |
@@ -46,7 +42,6 @@ FIELD="pineapple"
 
 # Choose your pattern to farm on fields
 function farm_pattern(
-
 # Available options:    farm_square
 #                       farm_snake
 #                       farm_better_snake

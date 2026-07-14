@@ -33,10 +33,11 @@ echo
 echo "Hotkeys you can use inside sandbox, when joined BSS:"
 note "CTRL + M = Start macro"
 note "CTRL + K = Stop macro"
+note "CTRL + Q = Test Path"
 echo
 echo "Press Enter to launch Bee Swarm Simulator"
 read
-hyprctl notify 2 100000 0 "CTRL + M = Start macro | CTRL + Q = Stop macro"
+hyprctl notify 2 100000 0 "CTRL + M = Start macro | CTRL + Q = Stop macro | CTRL + Q = Test Path"
 rm $MACRO_DIR/variables/cant_use_pixel_detection
 org.vinegarhq.Sober "roblox-player:1+launchmode:play+gameinfo:1537690962+placelauncherurl:https%3A%2F%2Fassetgame.roblox.com%2Fgame%2FPlaceLauncher.ashx%3Frequest%3DRequestGame%26browserTrackerId%3D0%26placeId%3D1537690962%26isPlayTogetherGame%3Dfalse"
 exit 1
