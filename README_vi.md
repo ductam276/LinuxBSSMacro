@@ -27,15 +27,11 @@ Công cụ tự động hoá (Macro) mã nguồn mở cho tựa game Giả lập
 </p>
 
 > [!WARNING]
-> Nếu gặp phải lỗi, hãy mở một bản báo cáo lỗi, hãy tạo 1 yêu cầu pull (kéo source) , tham gia với tôi [discord chat](https://discord.gg/pAUUYbPqs6), hoặc [group on Telegram](https://t.me/+gws61dtKyIRlYzky). 36 [🇷🇺/🇺🇸/🇻🇳]
+> Nếu gặp phải lỗi, hãy mở một bản báo cáo lỗi, hãy tạo 1 yêu cầu pull (kéo source) , tham gia với tôi [discord](https://discord.gg/pAUUYbPqs6), hoặc [Telegram](https://t.me/+gws61dtKyIRlYzky). 36 [🇷🇺/🇺🇸/🇻🇳]
 
-<p align='center'>
-<a href="https://github.com/painvision/BeeTuxMacro/blob/main/README_ru.md">
-README.md на русском
-</a>
 </p>
 <p align='center'>
-<a href="https://github.com/ductam276/LinuxBSSMacro/blob/main/README_vi.md">
+<a href="https://github.com/ductam276/LinuxBSSMacro/blob/main/README_en.md">
 README.md Tiếng Việt
 </a>
 </p>
