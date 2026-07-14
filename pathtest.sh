@@ -1,10 +1,14 @@
 #!/bin/bash
-export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && pwd)
 . $MACRO_DIR/main/utils.sh
 . $MACRO_DIR/test.sh
 . $MACRO_DIR/keyboard.sh
-. $MACRO_DIR/pathtest.sh
 
-function sunflower(
-    zoom_out 
+function test123(
+    reset
+    down_w
+    wait 1
+    up_w
+    down_d
+    wait 5
+    up_d
 )
