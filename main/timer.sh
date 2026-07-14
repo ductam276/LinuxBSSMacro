@@ -1,4 +1,4 @@
-. $MACRO_DIR/stuff/utils.sh
+. $MACRO_DIR/main/utils.sh
 . $MACRO_DIR/stuff/paths.sh
 . $MACRO_DIR/config.sh
 

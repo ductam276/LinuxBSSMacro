@@ -6,7 +6,7 @@ unhold_keys 2>/dev/null
 unhold_keys 2>/dev/null
 rm $MACRO_DIR/lockfile 2>/dev/null
 rm $MACRO_DIR/stuff/lockfiletest 2>/dev/null
-notify-send "Beetux Macro" "‼️ Macro cancelled" -i $MACRO_DIR/frosty_bee.png
+notify-send "LinuxBSSMacro" "‼️ Macro cancelled" -i $MACRO_DIR/frosty_bee.png
 for i in {1..10}:
 do
     pkill -f clicker.sh 2>/dev/null

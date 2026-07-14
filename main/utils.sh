@@ -1,6 +1,5 @@
-export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && cd .. && pwd)
-
 . $MACRO_DIR/config.sh
+. $MACRO_DIR/test.sh
 if [ ! -d "$MACRO_DIR/variables/" ]; then
     mkdir $MACRO_DIR/variables/
 fi
@@ -512,7 +511,7 @@ function wait(
 
 
 function exit_macro(
-bash -c $MACRO_DIR/stuff/close.sh
+bash -c $MACRO_DIR/close.sh
 )
 
 function place_splinker(
