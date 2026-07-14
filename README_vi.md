@@ -32,7 +32,7 @@ Công cụ tự động hoá (Macro) mã nguồn mở cho tựa game Giả lập
 </p>
 <p align='center'>
 <a href="https://github.com/ductam276/LinuxBSSMacro/blob/main/README_en.md">
-README.md Tiếng Việt
+README.md
 </a>
 </p>
 
