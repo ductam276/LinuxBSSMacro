@@ -86,7 +86,11 @@ ninja -C build install
 git clone https://github.com/ductam276/LinuxBSSMacro
 ```
 ### Configuration
-Edit `$MACRO_DIR/config.sh` file using your favourite text editor. No GUI, the Linux way to configure your macro
+Start config.sh to fill all infomation:
+```
+bash -c $MACRO_DIR/config.sh
+```
+
 
 <h1 align='center'>
 Setup
@@ -115,13 +119,7 @@ cd Hyprland
 make all && sudo make install
 ```
 
-Next, start config.sh to fill all infomation:
-```
-bash -c $MACRO_DIR/config.sh
-```
-
-
-After that, start gui.sh to using the macro.
+Next, start gui.sh to using the macro.
 ```
 bash -c $MACRO_DIR/gui.sh
 ```
