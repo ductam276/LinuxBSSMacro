@@ -1,11 +1,11 @@
-export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && pwd)
+export MACRO_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 . $MACRO_DIR/main/utils.sh
 
 unhold_keys 2>/dev/null
 unhold_keys 2>/dev/null
 unhold_keys 2>/dev/null
 rm $MACRO_DIR/lockfile 2>/dev/null
-rm $MACRO_DIR/stuff/lockfiletest 2>/dev/null
+rm $MACRO_DIR/lockfiletest 2>/dev/null
 notify-send "LinuxBSSMacro" "‼️ Macro cancelled" -i $MACRO_DIR/frosty_bee.png
 for i in {1..10}:
 do

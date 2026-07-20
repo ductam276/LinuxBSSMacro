@@ -4,7 +4,7 @@
 # |____|_|_||_\_,_/_\_\___/___/___/_|  |_\__,_\__|_| \___/
                                                          
 # Open source Bee Swarm Simulator macro, written in bash and ydotool for Linux
-# github.com/painvision/BeeTuxMacro
+# https://github.com/ductam276/LinuxBSSMacro
 
 #  __  __    _    ___ _   _
 # |  \/  |  / \  |_ _| \ | |
@@ -12,6 +12,7 @@
 # | |  | |/ ___ \ | || |\  |
 # |_|  |_/_/   \_\___|_| \_| settings
 #
+
 
 # Enter your walking speed WITHOUT haste tokens
 WALKSPEED=24
@@ -30,25 +31,7 @@ BEE_IN_HIVE=1
 
 #Bee discovered? (1 - 46)
 BEE_DIS=20
-#  _____ ___ _____ _     ____
-# |  ___|_ _| ____| |   |  _ \
-# | |_   | ||  _| | |   | | | |
-# |  _|  | || |___| |___| |_| |
-# |_|   |___|_____|_____|____/ options
-#
 
-# Available options: pine, rose, strawberry, pineapple, pumpkin
-FIELD="pineapple"
-
-# Choose your pattern to farm on fields
-function farm_pattern(
-# Available options:    farm_square
-#                       farm_snake
-#                       farm_better_snake
-
-#                       your option here ⬇
-                        farm_better_snake
-)
 
 #   ____ ___  _   ___     _______ ____ _____ ___ _   _  ____
 #  / ___/ _ \| \ | \ \   / / ____|  _ \_   _|_ _| \ | |/ ___|

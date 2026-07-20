@@ -62,7 +62,7 @@ makepkg -si --noconfirm
 Run this command:
 
 ```
-yay -S wlrctl wtype imagemagick bc xorg-xrandr grim yad
+yay -S wlrctl wtype imagemagick bc xorg-xrandr grim 
 ```
 - Debian-based distros:
 

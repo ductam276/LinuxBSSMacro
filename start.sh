@@ -1,4 +1,4 @@
-export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && pwd)
+export MACRO_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 . $MACRO_DIR/main/utils.sh
 . $MACRO_DIR/stuff/paths.sh

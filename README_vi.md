@@ -58,7 +58,7 @@ makepkg -si --noconfirm
 Sau đó chạy lệnh này:
 
 ```
-yay -S wlrctl wtype imagemagick bc xorg-xrandr grim yad
+yay -S wlrctl wtype imagemagick bc xorg-xrandr grim
 ```
 - Bản phân phối dựa trên Debian-based:
 
