@@ -5,15 +5,7 @@
                                                          
 # Open source Bee Swarm Simulator macro, written in bash and ydotool for Linux
 # https://github.com/ductam276/LinuxBSSMacro
-
-#  __  __    _    ___ _   _
-# |  \/  |  / \  |_ _| \ | |
-# | |\/| | / _ \  | ||  \| |
-# | |  | |/ ___ \ | || |\  |
-# |_|  |_/_/   \_\___|_| \_| settings
-#
-
-
+FCONFIG=0
 # Enter your walking speed WITHOUT haste tokens
 WALKSPEED=24
 
@@ -23,6 +15,7 @@ USE_SPRINKLER=0 #0 - off, 1 - on
 # Enter slot number where your sprinkler is
 SPRINKLER_SLOT=1 #from 1 to 6
 
+SPRINKLER_TYPE=
 # Use auto hive?
 AUTO_FIND_HIVE=0 #0 - off, 1 - on
 
@@ -31,16 +24,6 @@ BEE_IN_HIVE=1
 
 #Bee discovered? (1 - 46)
 BEE_DIS=20
-
-
-#   ____ ___  _   ___     _______ ____ _____ ___ _   _  ____
-#  / ___/ _ \| \ | \ \   / / ____|  _ \_   _|_ _| \ | |/ ___|
-# | |  | | | |  \| |\ \ / /|  _| | |_) || |  | ||  \| | |  _
-# | |__| |_| | |\  | \ V / | |___|  _ < | |  | || |\  | |_| |
-#  \____\___/|_| \_|  \_/  |_____|_| \_\|_| |___|_| \_|\____| options
-#
-
-# Backpack detection modes, how macro should trigger back_to_hive function
 
 # 0 - only full backpack pixel detection (only if you have grim supported)
 # 1 - backpack detection + farm seconds for maximum time
@@ -51,13 +34,6 @@ FARM_SECONDS=420 # Set maximum seconds you can farm
 
 CONVERT_TIME=100 # Approximate time to convert full backpack
 AUTO_WREATH=1 # Use honey wreath for converting
-
-#  _____ _____    _  _____ _   _ ____  _____ ____
-# |  ___| ____|  / \|_   _| | | |  _ \| ____/ ___|
-# | |_  |  _|   / _ \ | | | | | | |_) |  _| \___ \
-# |  _| | |___ / ___ \| | | |_| |  _ <| |___ ___) |
-# |_|   |_____/_/   \_\_|  \___/|_| \_\_____|____/ here
-#
 
 # Interrupt farming to collect dispensers master toggle
 GATHER_INTERRUPT=1
@@ -75,3 +51,6 @@ AUTO_WHITE_FIELD_BOOSTER=0 # Use white field booster every 45 minutes
 AUTO_STRAWBERRY_DISPENSER=0 # Claim free strawberries every 4 hours
 AUTO_BLUEBERRY_DISPENSER=0 # Claim free blueberries every 4 hours
 AUTO_ROYAL_JELLY_DISPENSER=0 # Claim free royal jelly every 22 hours
+
+FIELD=bamboo
+PATTERN=snake
