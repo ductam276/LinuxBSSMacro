@@ -21,6 +21,18 @@ sp() {
         grep "^$key=" "$CONFIG" | cut -d'=' -f2-
     fi
 }
+flip() {
+    local -n display_var="$1"
+    local config_var="$2"
+    local config_state=$(sp $config_var)
+    if [ "$config_state" = 0 ]; then 
+        display_var="x" 
+        rp $config_var 1
+    else 
+        display_var=" "
+        rp $config_var 0
+    fi
+}
 setup=$(sp FCONFIG)
 farm_menu() {
     farm_pattern() {
@@ -215,9 +227,55 @@ farm_menu() {
 }
 collect_kill_menu() {
     kill_menu() {
+        subkm1() {
+            while true;do
+                clear
+                echo -e "${YELLOW}Main>Collect/Kill>Kill Options>Boss${RC}"
+                echo "1: [$boss1] King Beetle"
+                echo "2: [$boss2] Mondo Chick"
+                echo "3: [$boss3] Commando Chick"
+                echo "4: [$boss4] Tunnel Bear"
+                echo "5: [$boss5] Coconut Crab"
+                echo "0: Back"
+                read -p "Switch (1-5)" bosspick
+                case $bosspick in
+                    1) flip boss1 KING_BEETLE;;
+                    2) flip boss2 MONDO_CHICK;;
+                    3) flip boss3 COMMANDO_CHICK;;
+                    4) flip boss4 TUNNEL_BEAR;;
+                    5) flip boss5 COCONUT_CRAB;;
+                    0) kill_menu;;
+                esac
+            done 
+        }
+        subkm2() {
+            while true;do
+                clear
+                echo -e "${YELLOW}Main>Collect/Kill>Kill Options>Mobs${RC}"
+                echo "1: Kill All"
+                echo "2: Save All"
+                echo ""
+                read -p "Pick " mobpick
+                case $mobpick in
+                    1) ;;
+                    2) ;;
+                    3) ;;
+                    0) kill_menu;;
+                esac 
+            done
+        }
         while true;do
-        clear
-        echo -e "${YELLOW}Main>Collect/Kill>Kill Options${RC}"
+            clear
+            echo -e "${YELLOW}Main>Collect/Kill>Kill Options${RC}"
+            echo "1: Boss"
+            echo "2: Mobs"
+            echo "3: Ant"
+            echo "0: Back"
+            read -p "Pick (1-3)" km
+            case $km in
+                1|2|3) subkm$km;;
+                0) collect_kill_menu;;
+            esac 
         done
     }
     collect_menu() {
@@ -237,35 +295,38 @@ collect_kill_menu() {
             1) collect_menu;;
             2) kill_menu;;
             0) main_menu;;
-
         esac 
     done
 }
 setup() {
-    while true; do 
+        #Walkspeed
         clear
         echo -e "${YELLOW}SETUP:${RC}"
+        echo "Current Walk Speed: $(sp WALKSPEED)"
         read -p "Your walk speed (without Haste):" speed
-        if [$speed = ^[0-9]]; then
             rp WALKSPEED $speed
-        else
-            echo "NUMBER ONLY?"
-        fi
+        #Spinkler
+        clear
+        echo "Curent State: $(sp USING_SPRINKLER)"
         read -p "Using Spinkler? 1-Yes, 2-No, 3-Gay" usp
         case $usp in
             1) rp USE_SPRINKLER 1;;
             2) rp USE_SPRINKLER 0;;
-            3) echo "uhh, Is this true?";;
+            3) echo "uhh, Is this true?" ;;
         esac
+        #Bee quanity
         read -p "How many bee your HAVE?" beeih
-        if [$beeih <= 50 && $beeih >= 0];then
             rp BEE_IN_HIVE $beeih
-        else
-            echo "Alright, Lets start setup again"
-            sleep 2
-            setup
-        fi
-    done
+
+        #Hive Find Mode
+        echo "Select Hive Find Mode"
+        echo "1: auto"
+        echo "2: manual"
+        read -p "Pick (1-2)" hivemode
+        case $hivemode in
+        1) rp HIVE_MODE auto;;
+        2) rp HIVE_MODE manual;;
+        esac
 }
 main_menu() {
     if [ $setup = 0];then
@@ -283,20 +344,30 @@ main_menu() {
             echo "N: Start Macro"
             echo "M: Stop Macro" 
             echo "0: Exit"
-            read -p "Pick" menu
+            read -p "Pick: " menu
             case $menu in
                 1) farm_menu;;
                 2) collect_kill_menu;;
                 3) planter;;
                 4) setting_menu;;
-                B) bash sandbox.sh > sandbox.log 2>&1 &;;
-                N) bash $MACRO_DIR/main/stuff/start.sh > run.log 2>&1 &;;
+                B) 
+                    bash sandbox.sh > sandbox.log 2>&1 &
+                    Sandbox=1;
+                ;;
+                N) 
+                    bash $MACRO_DIR/main/stuff/start.sh > run.log 2>&1 &
+                ;;
                 M) bash $MACRO_DIR/main/stuff/close.sh > run.log 2>&1 &;;
                 0) 
+                    hyprctl dispatch closewindow "class:^(beeswarm)$"
+                    hyprctl dispatch closewindow "class:^(soberr)$"
+                    pkill -f sandbox.sh
+                    pkill -f org.vinegarhq.Sober
                     rm sandbox.log
                     bash $MACRO_DIR/main/stuff/close.sh > run.log 2>&1 &
                     sleep 1
                     rm run.log
+                    Sandbox=0
                     exit 0 
                 ;;  
             esac 
