@@ -52,5 +52,10 @@ AUTO_STRAWBERRY_DISPENSER=0 # Claim free strawberries every 4 hours
 AUTO_BLUEBERRY_DISPENSER=0 # Claim free blueberries every 4 hours
 AUTO_ROYAL_JELLY_DISPENSER=0 # Claim free royal jelly every 22 hours
 
-FIELD=bamboo
+FIELD=mushroom
 PATTERN=snake
+KING_BEETLE=1
+MONDO_CHICK=0
+COMMANDO_CHICK=1
+TUNNEL_BEAR=1
+COCONUT_CRAB=1
