@@ -1,5 +1,4 @@
-export MACRO_DIR=$(cd $(dirname "$BASH_SOURCE[0]") && cd .. && pwd)
-
+export MACRO_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 function note(
 echo -e "\\033[30;43m[i] $1\\033[0m"
 )
@@ -30,14 +29,9 @@ info "- Macro's input would be only addressed to BSS, not your main environment"
 info "- Mouse control might be quirky"
 info "- Auto Reconnect sadly DOESN'T WORK."
 echo
-echo "Hotkeys you can use inside sandbox, when joined BSS:"
-note "CTRL + M = Start macro"
-note "CTRL + K = Stop macro"
-note "CTRL + Q = Test Path"
 echo
 echo "Press Enter to launch Bee Swarm Simulator"
 read
-hyprctl notify 2 100000 0 "CTRL + M = Start macro | CTRL + Q = Stop macro | CTRL + Q = Test Path"
 rm $MACRO_DIR/variables/cant_use_pixel_detection
-org.vinegarhq.Sober "roblox-player:1+launchmode:play+gameinfo:1537690962+placelauncherurl:https%3A%2F%2Fassetgame.roblox.com%2Fgame%2FPlaceLauncher.ashx%3Frequest%3DRequestGame%26browserTrackerId%3D0%26placeId%3D1537690962%26isPlayTogetherGame%3Dfalse"
+hyprctl dispatch exec "[class ^(soberr)$] org.vinegarhq.Sober "roblox-player:1+launchmode:play+gameinfo:1537690962+placelauncherurl:https%3A%2F%2Fassetgame.roblox.com%2Fgame%2FPlaceLauncher.ashx%3Frequest%3DRequestGame%26browserTrackerId%3D0%26placeId%3D1537690962%26isPlayTogetherGame%3Dfalse"
 exit 1
